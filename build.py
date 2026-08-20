@@ -26,7 +26,7 @@ from datetime import date
 # BASE_URL must be the site's real, final origin + path, with a trailing slash.
 # It is used for canonical URLs, Open Graph URLs, JSON-LD and sitemap.xml only;
 # every in-page link is relative, so the site works under any path.
-BASE_URL = "https://mylesieong.github.io/bible-project-website/"
+BASE_URL = "https://mylesieong.github.io/BibleReaderWebsite/"
 
 SITE_NAME = "Bible Project"
 APP_NAME = "Bible Project: Guided by AI"
