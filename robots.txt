@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mylesieong.github.io/bible-project-website/sitemap.xml
