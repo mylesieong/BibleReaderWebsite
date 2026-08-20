@@ -1,0 +1,116 @@
+<p><strong>Applies to:</strong> the free app only — <code>com.municornio.BibleReaderFree</code> (App Store) and
+    <code>com.municornio.biblereader</code> (Google Play), together with the backend at
+    <code>bible-reader-amber.vercel.app</code> that serves it. The paid app
+    (<code>com.municornio.BibleReader</code>) is out of scope and keeps its own policy.</p>
+
+    <p><strong>Effective date:</strong> 12 August 2026<br>
+    <strong>Last updated:</strong> 12 August 2026<br>
+    <strong>Published by:</strong> Municornio Ltd. ("we", "us")<br>
+    <strong>Contact:</strong> <a href="mailto:unicornio.macau@gmail.com">unicornio.macau@gmail.com</a></p>
+
+    <hr>
+
+    <h2>1. The short version</h2>
+    <p>There is no account to create. You are never asked for your name, email address, phone number, postal address or payment details, and the app has no login screen.</p>
+    <p>Reading the Bible, searching, comparing translations, the verse of the day and the daily reminder all work on your device and send us nothing.</p>
+    <p>The one feature that leaves your device is <strong>Father AI</strong>. When you ask a question, that question is sent to our server, forwarded to OpenAI to be answered, and the question and answer are stored so your conversation history works.</p>
+
+    <h2>2. What the app stores on your device</h2>
+    <p>Held in <code>SharedPreferences</code> (Android) or <code>NSUserDefaults</code> (iOS). It stays on the device, is not sent to us, and is removed when you uninstall the app:</p>
+    <ul>
+      <li>Your selected translation (KJV or ESV) and your reading position</li>
+      <li>The current verse of the day</li>
+      <li>Whether the daily reminder is on</li>
+      <li>Today's Father AI question count, used to apply the free daily allowance</li>
+      <li>Your cached subscription status</li>
+      <li>Whether you have dismissed or taken the in-app survey invitation</li>
+      <li>Your anonymous session tokens (see §3)</li>
+    </ul>
+
+    <h2>3. Your anonymous identity</h2>
+    <p>On first launch the app asks our backend for an <strong>anonymous identity</strong> — a random identifier with no personal information attached to it. It exists so your Father AI conversations can be filed somewhere and read back later.</p>
+    <p>It is not linked to your name, email, phone number, device advertising identifier, Apple Account or Google Account. We cannot use it to identify you, and neither can anyone we share data with.</p>
+    <p>If you uninstall the app, or the stored session is otherwise lost, that identity is gone. A new launch creates a different one, and the conversations filed under the old identity are no longer reachable from your device.</p>
+
+    <h2>4. What we collect, and why</h2>
+    <table>
+      <thead>
+        <tr><th>What</th><th>When</th><th>Why</th><th>Where it is kept</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>The text of your Father AI question</td><td>Each time you ask</td><td>To generate an answer</td><td>Our database (Supabase), and sent to OpenAI</td></tr>
+        <tr><td>The answer generated for you</td><td>Each time you ask</td><td>So your history and follow-up questions work</td><td>Our database (Supabase)</td></tr>
+        <tr><td>A short title for each conversation (your first question, truncated)</td><td>Each time you start a thread</td><td>To list your history</td><td>Our database (Supabase)</td></tr>
+        <tr><td>Your anonymous identifier and session tokens</td><td>First launch, then refreshed</td><td>To keep your conversations yours</td><td>Our database, and your device</td></tr>
+        <tr><td>Timestamps for each message and conversation</td><td>Each time you ask</td><td>To order your history</td><td>Our database (Supabase)</td></tr>
+        <tr><td>Standard server request data (IP address, request time, error logs)</td><td>Each request</td><td>Security, abuse prevention and debugging</td><td>Our hosting provider's logs (Vercel)</td></tr>
+        <tr><td>Anonymous usage events (see §5)</td><td>While using the app</td><td>To understand which features are used</td><td>Firebase Analytics</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Please do not put sensitive personal information into a Father AI question.</strong> Write questions as you would ask them of a stranger — the text is stored and sent to OpenAI, and there is no way for us to un-send it.</p>
+
+    <p>We do <strong>not</strong> collect: your name, email address, phone number, postal address, payment card details, contacts, photos, precise location, health data, or your device's advertising identifier. There is no advertising in the app, no ad SDK, and no cross-app or cross-site tracking. The app makes no App Tracking Transparency request because it does not track you.</p>
+
+    <h2>5. Analytics</h2>
+    <p>The app uses <strong>Firebase Analytics</strong> (Google) to count feature usage — for example that a search was run, a chapter was opened, the paywall was shown, or a conversation was resumed. These events record <em>that</em> something happened, not what you read, searched for or asked. The text of your questions is never sent to Firebase.</p>
+    <p>Firebase also collects standard device and app information such as device model, operating-system version, app version, country and general app-usage statistics. Google's handling of that data is described in its own privacy notice: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></p>
+    <p>Analytics data is not linked to your anonymous Father AI identity.</p>
+
+    <h2>6. Subscriptions</h2>
+    <p>Premium is an auto-renewing subscription sold through the <strong>App Store</strong> (StoreKit) and <strong>Google Play</strong> (Play Billing). The purchase happens entirely inside Apple's or Google's own flow.</p>
+    <p>We never see or receive your payment card, billing address or store account details. The app reads only whether an active entitlement exists, and stores that one true/false answer on your device. Apple's and Google's own privacy policies govern the transaction.</p>
+
+    <h2>7. Notifications</h2>
+    <p>The daily prayer reminder is a <strong>local notification</strong> scheduled on your device. It involves no server and no push service, and nothing is sent to us when it fires or when you tap it. On Android 13 and later the app asks for notification permission only if you turn the reminder on; you can revoke it at any time in system settings.</p>
+
+    <h2>8. The in-app survey</h2>
+    <p>The app may invite you to take a short survey. Tapping it opens an external website in your browser — nothing you type there passes through the app, and the app does not attach your identifier to the link. The survey is optional; dismissing it hides the invitation for good. What you submit is governed by that site's own privacy terms.</p>
+
+    <h2>9. Who we share data with</h2>
+    <p>We do not sell your data, and we do not share it for advertising. We use these processors:</p>
+    <ul>
+      <li><strong>OpenAI</strong> — receives the text of your Father AI question and the recent turns of the same conversation, in order to generate an answer. It is sent through our server, so OpenAI does not receive your identifier, IP address or device information. <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">Privacy policy</a></li>
+      <li><strong>Supabase</strong> — hosts the database holding your anonymous profile, conversations and messages. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
+      <li><strong>Vercel</strong> — hosts the backend and keeps standard request and error logs. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy policy</a></li>
+      <li><strong>Google (Firebase Analytics)</strong> — anonymous usage analytics, as described in §5.</li>
+      <li><strong>Apple and Google</strong> — process subscription payments, as described in §6.</li>
+    </ul>
+    <p>We will also disclose data where we are legally required to.</p>
+
+    <h2>10. How long we keep it</h2>
+    <ul>
+      <li><strong>Conversations and messages</strong> — kept until you delete them, or until the identity they belong to is deleted.</li>
+      <li><strong>Server request logs</strong> — kept for our hosting provider's standard retention window, then rotated out.</li>
+      <li><strong>Analytics events</strong> — kept according to the retention period configured in Firebase Analytics.</li>
+      <li><strong>On-device data</strong> — kept until you clear the app's storage or uninstall it.</li>
+    </ul>
+
+    <h2>11. Your choices and rights</h2>
+    <ul>
+      <li><strong>Delete a conversation.</strong> Any conversation can be deleted from inside the app. Deleting it removes the conversation and every message in it from our database.</li>
+      <li><strong>Delete everything.</strong> Write to <a href="mailto:unicornio.macau@gmail.com">unicornio.macau@gmail.com</a> and we will delete the anonymous profile and all conversations associated with it. Because the identity is anonymous, please send the request from the device, or include the identifier shown in the app, so we can locate the right records.</li>
+      <li><strong>Stop analytics.</strong> Turning off the relevant option in your device's privacy settings, or uninstalling the app, stops further analytics collection.</li>
+      <li><strong>Use the app without any of this.</strong> Reading, search, translation compare, verse of the day and the daily reminder work fully offline and send nothing anywhere.</li>
+    </ul>
+    <p>Depending on where you live, you may also have rights to access, correct, port or restrict the processing of your data, and to complain to a data-protection authority. Note the practical limit: we hold no information that identifies you, so for most requests we cannot connect a request to a record without the identifier from your device.</p>
+    <p>Where the GDPR applies, our legal basis is the performance of the contract with you (answering your questions and keeping your history) and our legitimate interests in securing the service and understanding how it is used. In Canada, where we are established, PIPEDA applies and complaints may be brought to the Office of the Privacy Commissioner of Canada.</p>
+
+    <h2>12. Children</h2>
+    <p>The app is rated for general audiences and is not directed at children under 13 (or the equivalent minimum age where you live). We do not knowingly collect personal information from children. Father AI answers are generated by a language model; parents should be aware of that before letting a child use the feature.</p>
+
+    <h2>13. Security</h2>
+    <p>All traffic between the app, our backend and every processor uses HTTPS. Database access is restricted to our backend — row-level security is enabled and the app never talks to the database directly. No system is perfectly secure, and we cannot guarantee absolute security.</p>
+
+    <h2>14. International transfers</h2>
+    <p>Our processors operate servers in various countries, including the United States. Using the app means your Father AI questions may be processed outside the country you live in.</p>
+
+    <h2>15. Changes to this policy</h2>
+    <p>If this policy changes materially we will update the effective date above and post the revised version at the same URL before the change takes effect.</p>
+
+    <h2>16. Contact</h2>
+    <p>Questions, or a deletion request: <a href="mailto:unicornio.macau@gmail.com">unicornio.macau@gmail.com</a><br>
+    Municornio Ltd., 1075 W 14th Ave, Vancouver, BC, Canada</p>
+    <p>Municornio Ltd. is the data controller for the purposes of this policy.</p>
+
+    <p><a href="index.html">← Back to Bible Project</a></p>

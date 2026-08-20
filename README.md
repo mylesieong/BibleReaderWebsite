@@ -20,11 +20,13 @@ bible-verses-about-anxiety/         SEO — topic collection
 bible-verses-about-hope/            SEO — topic collection
 bible-verses-about-healing/         SEO — topic collection
 bible-verses-about-encouragement/   SEO — topic collection
+privacy-policy.html                 the privacy policy (URL is in both store listings)
 404.html                            not-found page (GitHub Pages serves this)
 sitemap.xml, robots.txt             generated
 assets/css/site.css                 the only stylesheet
 assets/img/                         logo, favicon, Open Graph image
 _data/topics.json                   the 30 curated verses (see below)
+_data/privacy-policy.html           the policy prose, wrapped by the build
 build.py                            the generator
 ```
 
@@ -43,11 +45,15 @@ the source change.
 
 ## Deploying
 
-Any static host works. For GitHub Pages, enable Pages on the `main` branch at the
-repository root. `.nojekyll` is emitted by the build so Jekyll does not skip the
-underscore-prefixed `_data/` directory.
+This repository is mounted as a git submodule inside `mylesieong.github.io` at
+`products/bible-project/`, and the site is served from
+`https://mylesieong.github.io/products/bible-project/`. `.nojekyll` is emitted by the
+build so Jekyll does not skip the underscore-prefixed `_data/` directory.
 
-**Set `BASE_URL` in `build.py` to the site's real address before deploying.** It is the
+`privacy-policy.html` must keep its filename: both store listings point at
+`https://mylesieong.github.io/products/bible-project/privacy-policy.html`.
+
+**`BASE_URL` in `build.py` is the site's address.** It is the
 only place the absolute URL appears — canonical tags, Open Graph URLs, JSON-LD and
 `sitemap.xml` are all derived from it. Every link between pages is relative, so the
 site works under any path without changes.

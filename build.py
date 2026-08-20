@@ -26,7 +26,7 @@ from datetime import date
 # BASE_URL must be the site's real, final origin + path, with a trailing slash.
 # It is used for canonical URLs, Open Graph URLs, JSON-LD and sitemap.xml only;
 # every in-page link is relative, so the site works under any path.
-BASE_URL = "https://mylesieong.github.io/BibleReaderWebsite/"
+BASE_URL = "https://mylesieong.github.io/products/bible-project/"
 
 SITE_NAME = "Bible Project"
 APP_NAME = "Bible Project: Guided by AI"
@@ -189,10 +189,13 @@ def breadcrumb_ld(slug: str, label: str) -> dict:
 
 
 def page(slug: str, title: str, description: str, body: str, jsonld: list[dict],
-         og_type: str = "website") -> None:
-    """Write one page to <slug>/index.html (or index.html at the root)."""
+         og_type: str = "website", filename: str | None = None) -> None:
+    """Write one page to <slug>/index.html (or index.html at the root).
+
+    `filename` writes a flat file of that name at the root instead, for pages
+    like the privacy policy whose URL is fixed by an app-store listing."""
     p = depth_prefix(slug)
-    url = abs_url(slug)
+    url = BASE_URL + filename if filename else abs_url(slug)
     graph = json.dumps(
         {"@context": "https://schema.org", "@graph": jsonld},
         ensure_ascii=False, separators=(",", ":"),
@@ -241,7 +244,10 @@ def page(slug: str, title: str, description: str, body: str, jsonld: list[dict],
 </body>
 </html>
 """
-    out = ROOT / "index.html" if slug == "" else ROOT / slug / "index.html"
+    if filename:
+        out = ROOT / filename
+    else:
+        out = ROOT / "index.html" if slug == "" else ROOT / slug / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(doc, encoding="utf-8")
     print(f"  {out.relative_to(ROOT)}")
@@ -1260,6 +1266,39 @@ def build_no_ads() -> None:
           faq_ld(NOADS_FAQ)], og_type="article")
 
 
+def build_privacy() -> None:
+    """The privacy policy. Its URL is printed in both store listings, so the page
+    is written flat as `privacy-policy.html` and must keep that name. The prose
+    lives in `_data/privacy-policy.html` and is the legal text verbatim; only the
+    surrounding chrome is generated."""
+    slug = ""
+    prose = (ROOT / "_data" / "privacy-policy.html").read_text(encoding="utf-8").strip()
+    title = f"Privacy Policy \u2013 {SITE_NAME}"
+    description = (
+        "No account, no ads, and nothing collected while you read. What Father AI "
+        "sends to our server, what is kept, and how to have it deleted."
+    )
+    body = f"""
+<section class="hero">
+  <div class="wrap prose">
+    <span class="eyebrow">Privacy</span>
+    <h1>Privacy Policy</h1>
+    <p class="lead">Reading, searching and the verse of the day never leave your
+    device. Father AI is the one feature that does, and this page sets out exactly
+    what it sends and what is kept.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap prose">
+{prose}
+  </div>
+</section>
+"""
+    page(slug, title, description, body,
+         [ORGANISATION, WEBSITE], og_type="article", filename="privacy-policy.html")
+
+
 # --- 404, sitemap, robots ----------------------------------------------------
 
 
@@ -1309,6 +1348,10 @@ def build_sitemap(slugs: list[tuple[str, str]]) -> None:
         f"<changefreq>monthly</changefreq><priority>{pri}</priority></url>"
         for s, pri in slugs
     )
+    entries += (
+        f"\n  <url><loc>{BASE_URL}privacy-policy.html</loc><lastmod>{BUILD_DATE}</lastmod>"
+        f"<changefreq>yearly</changefreq><priority>0.4</priority></url>"
+    )
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
@@ -1338,6 +1381,7 @@ def main() -> None:
     build_no_ads()
     for name in TOPICS:
         build_topic(name)
+    build_privacy()
     build_404()
 
     build_sitemap(
