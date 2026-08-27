@@ -36,7 +36,7 @@ PRIVACY_URL = "https://mylesieong.github.io/products/bible-project/privacy-polic
 TERMS_URL = "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
 
 # TODO: replace with the live store listings once the apps are published.
-APP_STORE_URL = "https://apps.apple.com/app/bible-project-guided-by-ai/id0000000000"
+APP_STORE_URL = "https://apps.apple.com/us/app/bible-project-guided-by-ai/id6480479278"
 PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.municornio.biblereader"
 
 BUILD_DATE = date.today().isoformat()
