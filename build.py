@@ -141,6 +141,7 @@ def footer(slug: str) -> str:
         <p><a href="{PRIVACY_URL}">Privacy Policy</a> &middot;
            <a href="{TERMS_URL}">Terms of Use</a> &middot;
            <a href="mailto:{CONTACT_EMAIL}">Contact</a></p>
+        <p>Part of <a href="https://mylesieong.github.io/">Sai vs. Reality</a></p>
       </div>
       {"".join(cols)}
     </div>
