@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static site generator for the Bible Project marketing site.
+"""Static site generator for the Footlamp marketing site.
 
 Emits plain HTML into the repository root so the result can be served by
 GitHub Pages (or any static host) with no build step at serve time. Run it
@@ -26,17 +26,17 @@ from datetime import date
 # BASE_URL must be the site's real, final origin + path, with a trailing slash.
 # It is used for canonical URLs, Open Graph URLs, JSON-LD and sitemap.xml only;
 # every in-page link is relative, so the site works under any path.
-BASE_URL = "https://mylesieong.github.io/products/bible-project/"
+BASE_URL = "https://saivsreality.com/products/footlamp/"
 
-SITE_NAME = "Bible Project"
-APP_NAME = "Bible Project: Guided by AI"
+SITE_NAME = "Footlamp"
+APP_NAME = "Footlamp: Bible & Ask AI"
 PUBLISHER = "Municornio Ltd."
 CONTACT_EMAIL = "unicornio.macau@gmail.com"
-PRIVACY_URL = "https://mylesieong.github.io/products/bible-project/privacy-policy.html"
+PRIVACY_URL = "https://saivsreality.com/products/footlamp/privacy-policy.html"
 TERMS_URL = "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
 
-# TODO: replace with the live store listings once the apps are published.
-APP_STORE_URL = "https://apps.apple.com/us/app/bible-project-guided-by-ai/id6480479278"
+# The App Store URL is by numeric id only, so it survives store-name changes.
+APP_STORE_URL = "https://apps.apple.com/app/id6504839289"
 PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.municornio.biblereader"
 
 BUILD_DATE = date.today().isoformat()
@@ -372,7 +372,7 @@ def verse_html(entries: list[dict], with_prayer: bool = True) -> str:
 # --- Landing page ------------------------------------------------------------
 
 HOME_FAQ = [
-    ("Is Bible Project free?",
+    ("Is Footlamp free?",
      "Yes. The app is free to download, and reading is never gated. Every book and "
      "chapter in KJV and ESV, keyword search, topic collections, verse compare, the "
      "verse of the day and the daily reminder are free and unlimited. Father AI "
@@ -403,7 +403,7 @@ HOME_FAQ = [
      "both platforms from one purchase, and can be cancelled from your own store "
      "settings at any time."),
     ("Is there a web or desktop version?",
-     "No. Bible Project is an Android and iOS app. This site describes it; the "
+     "No. Footlamp is an Android and iOS app. This site describes it; the "
      "reading happens in the app."),
 ]
 
@@ -467,6 +467,7 @@ def build_home() -> None:
     <div>
       <span class="eyebrow">Android &amp; iOS &middot; Free</span>
       <h1>A Bible you can read anywhere, with an <span class="ai-text">AI that answers</span> when you have a question.</h1>
+      <p class="verse-line">&ldquo;Thy word is a lamp unto my feet, and a light unto my path.&rdquo; &mdash; Psalm 119:105</p>
       <p class="lead">No ads. No account. No sign-up. The full King James Version and
       English Standard Version are carried on your device, so reading, search and the
       verse of the day work on a plane, on a subway, or with no signal at all.</p>
@@ -474,7 +475,7 @@ def build_home() -> None:
     </div>
     <div class="hero-art">
       <img src="assets/img/app-logo.png" width="512" height="512"
-           alt="The Bible Project app icon: a figure with an open hand, lit from behind."
+           alt="The Footlamp app icon: a figure with an open hand, lit from behind."
            loading="eager" decoding="async" fetchpriority="high">
     </div>
   </div>
@@ -590,7 +591,7 @@ def build_home() -> None:
 """
     page(
         "",
-        "Bible Project: Offline KJV & ESV Bible App with Father AI",
+        "Footlamp: Offline KJV & ESV Bible App with Father AI",
         "A free, ad-free Bible app for iOS and Android. Read KJV and ESV fully "
         "offline, compare translations, and ask Father AI any question. "
         "No account, no sign-up.",
@@ -605,8 +606,8 @@ TOPIC_COPY = {
     "Anxiety": (
         "Bible Verses About Anxiety - 7 Verses with Prayers",
         "Seven Bible verses about anxiety and worry, in the King James Version, each "
-        "with a short guided prayer. Read them in context, offline, in the free Bible "
-        "Project app.",
+        "with a short guided prayer. Read them in context, offline, in the free "
+        "Footlamp app.",
         "Anxiety is the reason a great many people open a Bible, and it rarely comes "
         "with a chapter and verse attached. These seven passages are the collection "
         "the app surfaces under <em>Anxiety</em> &mdash; on worry about tomorrow, on "
@@ -617,7 +618,7 @@ TOPIC_COPY = {
     "Hope": (
         "Bible Verses About Hope - 7 Verses with Prayers",
         "Seven Bible verses about hope in the King James Version, each with a guided "
-        "prayer. Read them in full context offline in the free Bible Project app for "
+        "prayer. Read them in full context offline in the free Footlamp app for "
         "iOS and Android.",
         "Hope in scripture is not optimism about how things will turn out; it is "
         "confidence in who is holding them. These seven passages are the collection "
@@ -628,7 +629,7 @@ TOPIC_COPY = {
     "Healing": (
         "Bible Verses About Healing - 7 Verses with Prayers",
         "Seven Bible verses about healing in the King James Version, each with a short "
-        "guided prayer. Read them in context, offline, in the free Bible Project app.",
+        "guided prayer. Read them in context, offline, in the free Footlamp app.",
         "These seven passages are the collection the app surfaces under "
         "<em>Healing</em> &mdash; for illness, for grief, and for the kind of injury "
         "that does not show. They are offered as scripture to sit with, not as "
@@ -638,7 +639,7 @@ TOPIC_COPY = {
     "Encouragement": (
         "Bible Verses About Encouragement - 9 Verses with Prayers",
         "Nine Bible verses about encouragement and strength in the King James Version, "
-        "each with a guided prayer. Read them offline in the free Bible Project app.",
+        "each with a guided prayer. Read them offline in the free Footlamp app.",
         "These nine passages are the collection the app surfaces under "
         "<em>Encouragement</em> &mdash; the verses to reach for when the work is long, "
         "the week has been unkind, or someone else needs something better than advice.",
@@ -681,8 +682,8 @@ def build_topic(name: str) -> None:
 <section>
   <div class="wrap prose">
     <h2>Reading these in context</h2>
-    <p>A verse lifted out of its chapter can be made to say almost anything. Bible
-    Project is built so that a topic list is a way <em>in</em> to the text rather than a
+    <p>A verse lifted out of its chapter can be made to say almost anything. Footlamp
+    is built so that a topic list is a way <em>in</em> to the text rather than a
     substitute for it: tap a verse and you land in the reader at that exact verse, with
     the surrounding chapter there to be read.</p>
     <p>If a sentence is dense or archaic &mdash; and the King James Version has plenty of
@@ -726,7 +727,7 @@ def build_topic(name: str) -> None:
 # --- Feature pages -----------------------------------------------------------
 
 OFFLINE_FAQ = [
-    ("Does the Bible Project app work without internet?",
+    ("Does the Footlamp app work without internet?",
      "Yes. Reading any book, chapter and verse, keyword search, the topic "
      "collections, verse compare, the verse of the day and the daily reminder all run "
      "on the device and need no connection. Father AI is the only feature that "
@@ -746,7 +747,7 @@ OFFLINE_FAQ = [
 def build_offline() -> None:
     slug = "offline-bible-app"
     title = "Offline Bible App - Read KJV & ESV With No Signal"
-    description = ("Bible Project carries the full KJV and ESV on your phone. Reading, "
+    description = ("Footlamp carries the full KJV and ESV on your phone. Reading, "
                    "search, topics and the verse of the day all work in airplane mode. "
                    "Free on iOS and Android.")
     body = f"""
@@ -833,7 +834,7 @@ def build_offline() -> None:
 
 AI_FAQ = [
     ("What is Father AI?",
-     "Father AI is the assistant inside Bible Project. It answers questions asked in "
+     "Father AI is the assistant inside Footlamp. It answers questions asked in "
      "ordinary language and explains individual verses in plain language, with the "
      "scripture the answer rests on shown alongside it."),
     ("How many questions do I get for free?",
@@ -954,7 +955,7 @@ def build_ai() -> None:
 
 
 KJV_ESV_FAQ = [
-    ("Which translations does Bible Project include?",
+    ("Which translations does Footlamp include?",
      "The King James Version and the English Standard Version, and no others. Both "
      "are bundled on the device."),
     ("Can I switch translation without losing my place?",
@@ -977,7 +978,7 @@ def build_kjv_esv() -> None:
     sample = TOPICS["Anxiety"][0]
     title = "KJV vs ESV - Compare Bible Translations Verse by Verse"
     description = ("How the King James Version and the English Standard Version differ, "
-                   "and how to read a verse in both at once. Bible Project bundles KJV "
+                   "and how to read a verse in both at once. Footlamp bundles KJV "
                    "and ESV offline on iOS and Android.")
     body = f"""
 {breadcrumbs(slug, "KJV vs ESV")}
@@ -985,7 +986,7 @@ def build_kjv_esv() -> None:
   <div class="wrap prose">
     <span class="eyebrow">Translations</span>
     <h1>KJV and ESV, side by side</h1>
-    <p class="lead">Bible Project carries two translations and only two: the King James
+    <p class="lead">Footlamp carries two translations and only two: the King James
     Version and the English Standard Version. Both live on your device, you can switch
     between them without losing your place, and you can put a single verse side by side
     across the pair before drawing a conclusion from its wording.</p>
@@ -1078,7 +1079,7 @@ VOTD_FAQ = [
 def build_votd() -> None:
     slug = "verse-of-the-day"
     samples = [TOPICS["Hope"][0], TOPICS["Encouragement"][0], TOPICS["Healing"][0]]
-    title = "Verse of the Day with a Guided Prayer - Bible Project"
+    title = "Verse of the Day with a Guided Prayer - Footlamp"
     description = ("A new verse each day from thirty curated passages, with artwork and a "
                    "short guided prayer, plus an optional daily reminder. Free and offline "
                    "on iOS and Android.")
@@ -1158,7 +1159,7 @@ def build_votd() -> None:
 
 
 NOADS_FAQ = [
-    ("Does Bible Project show ads?",
+    ("Does Footlamp show ads?",
      "No. There is no advertising in any format, anywhere in the app, and no ad SDK "
      "in it."),
     ("Do I need to create an account?",
@@ -1183,7 +1184,7 @@ NOADS_FAQ = [
 
 def build_no_ads() -> None:
     slug = "bible-app-without-ads"
-    title = "A Bible App With No Ads and No Account - Bible Project"
+    title = "A Bible App With No Ads and No Account - Footlamp"
     description = ("No advertising, no sign-up, no email address and no password. Read "
                    "the Bible offline in KJV and ESV without handing over anything. Free "
                    "on iOS and Android.")
@@ -1193,7 +1194,7 @@ def build_no_ads() -> None:
   <div class="wrap prose">
     <span class="eyebrow">No ads, no account</span>
     <h1>Nothing between opening the app and the verse</h1>
-    <p class="lead">Bible Project has no advertising in any format, anywhere. It has no
+    <p class="lead">Footlamp has no advertising in any format, anywhere. It has no
     sign-up screen, no sign-in screen, and no field asking for your email address. You
     install it, you open it, and you are reading.</p>
   </div>
@@ -1373,7 +1374,7 @@ def build_sitemap(slugs: list[tuple[str, str]]) -> None:
 
 
 def main() -> None:
-    print("Building the Bible Project site...")
+    print("Building the Footlamp site...")
     build_home()
     build_offline()
     build_ai()

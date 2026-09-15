@@ -1,6 +1,6 @@
-# Bible Project — website
+# Footlamp — website
 
-The static marketing site for **Bible Project**, the free Bible reader for Android and
+The static marketing site for **Footlamp**, the free Bible reader for Android and
 iOS. It is a landing page plus a small set of SEO pages, and it is deliberately plain:
 no framework, no JavaScript, no build step at serve time.
 
@@ -46,20 +46,24 @@ the source change.
 ## Deploying
 
 This repository is mounted as a git submodule inside `mylesieong.github.io` at
-`products/bible-project/`, and the site is served from
-`https://mylesieong.github.io/products/bible-project/`. `.nojekyll` is emitted by the
+`products/footlamp/`, and the site is served from
+`https://saivsreality.com/products/footlamp/` (the custom domain of that Pages site;
+`mylesieong.github.io` 301s to it). It was mounted at `products/bible-project/` until
+the 2026-09 rename; that path must keep a redirect to the new one, because the old
+privacy-policy URL is baked into shipped app builds and the QR codes in
+`marketing/social/posts/`. `.nojekyll` is emitted by the
 build so Jekyll does not skip the underscore-prefixed `_data/` directory.
 
 `privacy-policy.html` must keep its filename: both store listings point at
-`https://mylesieong.github.io/products/bible-project/privacy-policy.html`.
+`https://saivsreality.com/products/footlamp/privacy-policy.html`.
 
 **`BASE_URL` in `build.py` is the site's address.** It is the
 only place the absolute URL appears — canonical tags, Open Graph URLs, JSON-LD and
 `sitemap.xml` are all derived from it. Every link between pages is relative, so the
 site works under any path without changes.
 
-Two other constants near the top of `build.py` are placeholders:
-`APP_STORE_URL` and `PLAY_STORE_URL` point at listings that are not live yet.
+`APP_STORE_URL` uses the numeric app id only, so it does not change when the store
+name does.
 
 ## Where the content comes from
 

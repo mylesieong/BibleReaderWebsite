@@ -1,4 +1,4 @@
-/* Bible Project — site styles.
+/* Footlamp — site styles.
    Palette lifted from the app's AppColors
    (shared/src/commonMain/kotlin/com/municornio/biblereader/ui/theme/Theme.kt).
    The app is light-only by design; the site preserves that rather than
@@ -130,6 +130,7 @@ section + section { padding-top: 0; }
   gap: 56px; align-items: center;
 }
 .hero p.lead { max-width: 34em; }
+.hero .verse-line { font-style: italic; color: var(--muted); margin: -0.4em 0 1.2em; max-width: 34em; }
 .hero-art {
   position: relative; aspect-ratio: 1; border-radius: 28px; overflow: hidden;
   background: var(--surface); box-shadow: 0 24px 60px -20px var(--shadow);
