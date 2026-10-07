@@ -12,8 +12,9 @@ This repository is consumed as a **git submodule** of the app repository
 ```
 index.html                          landing page
 offline-bible-app/                  SEO — reading offline
-ai-bible-study-assistant/           SEO — Father AI
-kjv-vs-esv/                         SEO — comparing the two translations
+ai-bible-study-assistant/           SEO — Explain and Ask
+compare-bible-translations/         SEO — comparing KJV, BSB and WEB
+kjv-vs-esv/                         redirect stub to compare-bible-translations/ (ESV removed 2026-09)
 verse-of-the-day/                   SEO — daily verse, prayer, reminder
 bible-app-without-ads/              SEO — no ads, no account, privacy
 bible-verses-about-anxiety/         SEO — topic collection
@@ -70,8 +71,9 @@ name does.
 - **Copy** is written against `docs/app_description_external_facing.md` and
   `docs/store-listing.md` in the app repository. The copy rules in §7 of the store
   listing apply here too — in particular: never claim audio, keyword search is not AI,
-  KJV and ESV only, "Father AI" is capitalised exactly that way, and the free tier is
-  never described as having lost something.
+  KJV, BSB and WEB only (never the ESV), the AI features are **Explain** and **Ask**
+  (never "Father AI" or any persona), no accuracy words ("accurate", "verified",
+  "trusted"), and the free tier is never described as having lost something.
 - **Colours** are the app's own palette, lifted from
   `shared/src/commonMain/kotlin/com/municornio/biblereader/ui/theme/Theme.kt` and
   mirrored as CSS custom properties at the top of `assets/css/site.css`. The app is
@@ -80,8 +82,12 @@ name does.
 - **`_data/topics.json`** holds the 30 curated verses and their guided prayers,
   extracted from `GoldenVerse.kt` in the app, with the verse text resolved against the
   bundled `en_kjv.xml`. Verse text on the site is quoted from the **King James
-  Version**, which is in the public domain; the ESV is copyrighted and is quoted only
-  inside the app, under its own terms.
+  Version**; the translation comparison page also quotes the **BSB** and **WEB**,
+  read from the bundled `en_bsb.xml` and `en_web.xml`. All three are in the public
+  domain.
+- **Icons** (`assets/img/`) are resized from
+  `marketing/store-refresh/icon/final/icon_master_1024.png` in the app repository;
+  the Open Graph image is that icon centred on its own navy (#09163A).
 
 ## SEO notes
 

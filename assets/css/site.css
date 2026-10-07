@@ -183,7 +183,7 @@ a.card:hover { box-shadow: 0 14px 34px -16px var(--shadow); transform: translate
 a.card .more { color: var(--muted); font-size: 15px; font-weight: 600; margin: auto 0 0; padding-top: 14px; }
 a.card:hover .more { color: var(--ink); }
 
-/* AI-accented card: the gradient marks Father AI, exactly as it outlines the
+/* AI-accented card: the gradient marks Explain and Ask, exactly as it outlines the
    AI search field in the app. */
 .card-ai { border-color: transparent; background: var(--surface); position: relative; }
 .card-ai::before {
